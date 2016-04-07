@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var saveLicense = require('uglify-save-license');
 var streamqueue = require('streamqueue');
+var Server = require('karma').Server;
 
 gulp.task('default', function () {
     var c = {
@@ -73,20 +74,9 @@ gulp.task('clean:scripts:min', function () {
         }).pipe($.rimraf());
 })
 
-gulp.task('test', function () {
-
-    var testFiles = streamqueue({
-            objectMode: true
-        },
-        gulp.src('bower_components/angular/angular.js'),
-        gulp.src('bower_components/angular-mocks/angular-mocks.js'),
-        gulp.src('src/**/*.js'),
-        gulp.src('test/unit/**/*.js')
-    );
-
-    return testFiles
-        .pipe($.karma({
-            configFile: 'test/karma.conf.js',
-            action: 'run'
-        }));
+gulp.task('test', function (done) {
+    new Server({
+      configFile: __dirname + '/test/karma.conf.js',
+      singleRun: true
+    }, done).start();
 });

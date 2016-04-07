@@ -5,9 +5,13 @@ module.exports = function(config) {
     autoWatch : false,
 
     frameworks: ['jasmine'],
+    browsers: ['Chrome'],
 
-    plugins : [
-        'karma-jasmine'
+    files: [
+      '../bower_components/angular/angular.js',
+      '../bower_components/angular-mocks/angular-mocks.js',
+      '../src/**/*.js',
+      '../test/unit/**/*.js'
     ]
   });
 };
