@@ -20,8 +20,8 @@ describe('The json-tree directive', function () {
         };
     });
 
-    var unexpandedHtml = '<json-tree object="someObject"><json-tree>';
-    var expandedHtml = '<json-tree object="someObject" start-expanded="true"><json-tree>';
+    var unexpandedHtml = '<json-tree label="my tree" object="someObject"><json-tree>';
+    var expandedHtml = '<json-tree label="my tree" object="someObject" start-expanded="true"><json-tree>';
 
     it('should generate an un-expanded tree', function () {
         var html = unexpandedHtml;
@@ -29,6 +29,7 @@ describe('The json-tree directive', function () {
         compile(elem)(scope);
         scope.$digest();
         expect(elem.html()).not.toMatch(/.+?<ul .+?>/);
+        expect(elem[0].querySelector('.key').innerText).toMatch(/my tree/)
     });
 
     it('should generate an expanded tree', function () {
