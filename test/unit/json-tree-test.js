@@ -1,3 +1,4 @@
+
 describe('The json-tree directive', function () {
     'use strict';
 
@@ -11,7 +12,7 @@ describe('The json-tree directive', function () {
         });
         scope.someObject = {
             test: 'hello',
-            array: [1,1,2,3,5,8],
+            array: [1,9,2,3,5,8],
             subObj: {
                 subTest: 'hi',
                 subArray: [2,1,3,4,7,11]
@@ -60,14 +61,14 @@ describe('The json-tree directive', function () {
         // Get 'key' element
         var keyElem = elem[0].querySelector('.key');
         // Shouldn't have expanded class
-        expect(elem.html()).not.toMatch(/.+?class=".+?expanded.+?".+?>/);
+        expect(elem[0].querySelector('.expanded')).toBeNull()
         // Click the 'key' element
         keyElem.click();
         // Should have expanded class
-        expect(elem.html()).toMatch(/.+?class=".+?expanded.+?".+?>/);
+        expect(elem[0].querySelector('.expanded')).not.toBeNull()
         // Click the 'key' element
         keyElem.click();
         // Shouldn't have expanded class
-        expect(elem.html()).not.toMatch(/.+?class=".+?expanded.+?".+?>/);
+        expect(elem[0].querySelector('.expanded')).toBeNull()
     });
 });

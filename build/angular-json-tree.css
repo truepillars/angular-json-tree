@@ -47,12 +47,10 @@ json-tree json-node.expandable::before {
   position: absolute;
   left: 0px;
   font-size: 10px;
-  transition: -webkit-transform .1s ease;
   transition: transform .1s ease;
 }
 json-tree json-node.expandable.expanded::before {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 json-tree .leaf-value,
 json-tree .branch-preview {

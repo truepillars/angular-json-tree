@@ -100,7 +100,7 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                 '       <span class="branch-preview" ng-if="isExpandable" ng-show="!isExpanded" ng-click="toggleExpanded()">{{preview}}</span>' +
                 '       <ul class="branch-value" ng-if="isExpandable && shouldRender" ng-show="isExpanded">' +
                 '           <li ng-repeat="(subkey,subval) in value">' +
-                '               <json-node key="subkey" value="subval"></json-node>' +
+                '               <json-node key="subkey" value="subval" start-expanded="startExpanded()"></json-node>' +
                 '           </li>' +
                 '       </ul>',
             pre: function jsonNodeDirectiveLink(scope, elem, attrs) {
